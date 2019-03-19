@@ -8,32 +8,30 @@ import { WidgetListComponent } from "./components/widget-list/widget-list.compon
 import { TopicPillsComponent } from "./components/topic-pills/topic-pills.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "course", pathMatch: "full" },
+  { path: "", redirectTo: "/course", pathMatch: "full" },
   {
     path: "course",
-    component: CourseGridComponent,
+    component: CourseGridComponent
+  },
+  {
+    path: "course/:courseId",
+    component: CourseComponent,
     children: [
       {
-        path: ":courseId",
-        component: CourseComponent,
+        path: "module",
+        component: ModuleListComponent,
         children: [
           {
-            path: "module",
-            component: ModuleListComponent,
+            path: ":moduleId/lesson",
+            component: LessonTabsComponent,
             children: [
               {
-                path: ":moduleId/lesson",
-                component: LessonTabsComponent,
+                path: ":lessonId",
+                component: TopicPillsComponent,
                 children: [
                   {
-                    path: ":lessonId",
-                    component: TopicPillsComponent,
-                    children: [
-                      {
-                        path: "widget",
-                        component: WidgetListComponent
-                      }
-                    ]
+                    path: "widget",
+                    component: WidgetListComponent
                   }
                 ]
               }
