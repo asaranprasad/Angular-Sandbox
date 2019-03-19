@@ -1,16 +1,28 @@
 import { Injectable } from "@angular/core";
 
-const API_URL = "https://young-shore-20354.herokuapp.com/";
-
 @Injectable({
   providedIn: "root"
 })
 export class LessonService {
+  API_URL = "https://young-shore-20354.herokuapp.com/";
+
   constructor() {}
 
-  LESSON_URL = API_URL + "api/course/COURSE_ID/module/MODULE_ID/lessons";
+  findAllLessons() {
+    return fetch(this.API_URL + "api/lessons").then(response =>
+      response.json()
+    );
+  }
 
-  findAllLessons() {}
-  findLessonsForModule(moduleId) {}
-  findLessonById(lessonId) {}
+  findLessonsForModule(moduleId) {
+    return fetch(this.API_URL + "api/module/" + moduleId + "/lessons").then(
+      response => response.json()
+    );
+  }
+
+  findLessonById(lessonId) {
+    return fetch(this.API_URL + "api/lesson" + lessonId).then(response =>
+      response.json()
+    );
+  }
 }

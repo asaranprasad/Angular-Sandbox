@@ -1,13 +1,28 @@
 import { Injectable } from "@angular/core";
-const API_URL = "https://young-shore-20354.herokuapp.com/";
 
 @Injectable({
   providedIn: "root"
 })
 export class WidgetService {
+  API_URL = "https://young-shore-20354.herokuapp.com/";
+
   constructor() {}
 
-  findAllWidgets() {}
-  findWidgetsForTopic(topicId) {}
-  findWidgetById(widgetId) {}
+  findAllWidgets() {
+    return fetch(this.API_URL + "api/widgets").then(response =>
+      response.json()
+    );
+  }
+
+  findWidgetsForTopic(topicId) {
+    return fetch(this.API_URL + "api/topic/" + topicId + "/widgets").then(
+      response => response.json()
+    );
+  }
+
+  findWidgetById(widgetId) {
+    return fetch(this.API_URL + "api/widget" + widgetId).then(response =>
+      response.json()
+    );
+  }
 }
