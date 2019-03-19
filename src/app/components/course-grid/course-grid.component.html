@@ -2,46 +2,43 @@
   <h1 class="navbar-brand">Course Grid</h1>
 </nav>
 
-<div class="grid-container">
-  <div class="container-fluid row">
-      <CourseCard
-      key={course.id}
-      course={course}
-      delete={this.deleteCourse}
-    />
-
-    <div *ngFor="let course of courses" class="card bg-white col-sm-12 col-md-4 col-lg-2 m-1 p-0" >
+<div class="container-fluid row course-grid">
+  <div class="col">
+    <div class="container-fluid row">
+      <!-- Course Card -->
+      <div
+        *ngFor="let course of courses"
+        class="card bg-white col-sm-12 col-md-4 col-lg-2 m-1 p-0"
+        routerLink="/course/{{ course.id }}"
+        style="cursor: pointer"
+      >
         <img class="card-img-top" src="https://picsum.photos/300/200?image=4" />
         <div class="card-body">
-          <h5 class="card-title">{props.course.title}</h5>
+          <h5 class="card-title">{{ course.title }}</h5>
           <p>
-            Created:{" "}
-            {props.course.created == null
-              ? "Yesterday"
-              : props.course.created.substr(0, 10)}
-          </p>{" "}
-          <p>
-            Modified:{" "}
-            {props.course.modified == null
-              ? "Yesterday"
-              : props.course.modified.substr(0, 10)}
+            Created:
+            {{
+              course.created == null
+                ? "Yesterday"
+                : course.created.substr(0, 10)
+            }}
           </p>
-          <Link
-            class="btn btn-outline-primary"
-            to={`/course/${props.course.id}/edit`}
-          >
-            Edit
-          </Link>
-          &nbsp;
+          <p>
+            Modified:
+            {{
+              course.modified == null
+                ? "Yesterday"
+                : course.modified.substr(0, 10)
+            }}
+          </p>
           <button
-            class="btn btn-outline-danger"
-            type="button"
-            onClick={() => props.delete(props.course.id)}
+            routerLink="/course/{{ course.id }}"
+            class="btn btn-outline-primary container-fluid row"
           >
-            Delete
+            View
           </button>
         </div>
       </div>
-      
+    </div>
   </div>
 </div>
