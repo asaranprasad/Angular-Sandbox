@@ -5,6 +5,7 @@ import { CourseGridComponent } from "./components/course-grid/course-grid.compon
 import { ModuleListComponent } from "./components/module-list/module-list.component";
 import { LessonTabsComponent } from "./components/lesson-tabs/lesson-tabs.component";
 import { WidgetListComponent } from "./components/widget-list/widget-list.component";
+import { TopicPillsComponent } from "./components/topic-pills/topic-pills.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "course", pathMatch: "full" },
@@ -25,8 +26,14 @@ const routes: Routes = [
                 component: LessonTabsComponent,
                 children: [
                   {
-                    path: ":lessonId/widget",
-                    component: WidgetListComponent
+                    path: ":lessonId",
+                    component: TopicPillsComponent,
+                    children: [
+                      {
+                        path: "widget",
+                        component: WidgetListComponent
+                      }
+                    ]
                   }
                 ]
               }
