@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./module-list.component.css"]
 })
 export class ModuleListComponent implements OnInit {
-  @Input() courseId;
+  courseId;
   modules = [];
   selectedModule = { id: "" };
   constructor(
@@ -19,14 +19,6 @@ export class ModuleListComponent implements OnInit {
 
   selectModule = module => {
     this.selectedModule = module;
-    this.router.navigate([
-      "/",
-      "course",
-      this.courseId,
-      "module",
-      this.selectedModule.id,
-      "lesson"
-    ]);
   };
 
   ngOnInit() {

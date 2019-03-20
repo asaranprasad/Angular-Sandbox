@@ -4,7 +4,8 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class LessonService {
-  API_URL = "https://young-shore-20354.herokuapp.com/";
+  // API_URL = "https://young-shore-20354.herokuapp.com/";
+  API_URL = "http://localhost:8080/";
 
   constructor() {}
 
@@ -14,10 +15,15 @@ export class LessonService {
     );
   }
 
-  findLessonsForModule(moduleId) {
-    return fetch(this.API_URL + "api/module/" + moduleId + "/lessons").then(
-      response => response.json()
-    );
+  findLessonsForModule(courseId, moduleId) {
+    return fetch(
+      this.API_URL +
+        "api/course/" +
+        courseId +
+        "/module/" +
+        moduleId +
+        "/lessons"
+    ).then(response => response.json());
   }
 
   findLessonById(lessonId) {

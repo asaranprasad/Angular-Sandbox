@@ -15,31 +15,25 @@ const routes: Routes = [
   },
   {
     path: "course/:courseId",
-    component: CourseComponent,
-    children: [
-      {
-        path: "module",
-        component: ModuleListComponent,
-        children: [
-          {
-            path: ":moduleId/lesson",
-            component: LessonTabsComponent,
-            children: [
-              {
-                path: ":lessonId",
-                component: TopicPillsComponent,
-                children: [
-                  {
-                    path: "widget",
-                    component: WidgetListComponent
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    component: CourseComponent
+  },
+  {
+    path: "course/:courseId/module",
+    component: CourseComponent
+  },
+  {
+    path: "course/:courseId/module/:moduleId/lesson",
+    component: CourseComponent
+  },
+
+  {
+    path: "course/:courseId/module/:moduleId/lesson/:lessonId",
+    component: CourseComponent
+  },
+
+  {
+    path: "course/:courseId/module/:moduleId/lesson/:lessonId/widget",
+    component: CourseComponent
   }
 ];
 

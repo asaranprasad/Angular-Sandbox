@@ -4,7 +4,9 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class TopicService {
-  API_URL = "https://young-shore-20354.herokuapp.com/";
+  // API_URL = "https://young-shore-20354.herokuapp.com/";
+  API_URL = "http://localhost:8080/";
+
   constructor() {}
 
   findAllTopics() {

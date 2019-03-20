@@ -1,3 +1,11 @@
-<p>
-  lesson-tabs works!
-</p>
+<ul class="nav nav-pills">
+  <li
+    *ngFor="let lesson of lessons"
+    class="nav-item p-2 m-2 rounded gray webdev white"
+    (click)="selectLesson(lesson)"
+    [ngClass]="{ active: lesson.id === selectedLesson.id }"
+    style="cursor:pointer"
+  >
+    {{ lesson.title }}
+  </li>
+</ul>
