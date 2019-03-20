@@ -1,3 +1,4 @@
+<!-- TopNav -->
 <div
   class="navbar navbar-dark bg-dark text-white justify-content-between shadow"
 >
@@ -22,23 +23,16 @@
 </div>
 
 <!-- Page Body -->
-<!-- <div class="container-fluid p-0 h-100">
-      <div class="row m-0 h-100 w-100">
-        <div class="col-3 side-menu h-100">
-          <ModuleList
-            courseId={this.state.courseId}
-            courseTitle={this.state.course.title}
-          />
-        </div>
-        <div class="col-9 h-100 w-100">
-          <Route
-            path="/course/:courseId/edit/:moduleId/edit"
-            component={ModuleEditor}
-          />
-          <Route
-            path="/course/:courseId/edit/:moduleId/edit/:lessonId/edit"
-            component={LessonEditor}
-          />
-        </div>
-      </div>
-    </div>  -->
+<div class="container-fluid p-0 h-100">
+  <div class="row m-0 h-100 w-100">
+    <div class="col-3 side-menu h-100">
+      <app-module-list [courseId]="this.course.title"></app-module-list>
+    </div>
+
+    <div class="col-9 h-100 w-100">
+      <app-lesson-tabs></app-lesson-tabs>
+      <app-topic-pills></app-topic-pills>
+      <app-widget-list></app-widget-list>
+    </div>
+  </div>
+</div>
