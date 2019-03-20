@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, DoCheck } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LessonService } from "src/app/services/lesson.service";
 
@@ -25,6 +25,15 @@ export class LessonTabsComponent implements OnInit {
 
   selectLesson = lesson => {
     this.selectedLesson = lesson;
+    this.router.navigate([
+      "/",
+      "course",
+      this.courseId,
+      "module",
+      this.moduleId,
+      "lesson",
+      lesson.id
+    ]);
   };
 
   setParams(params) {
@@ -41,11 +50,6 @@ export class LessonTabsComponent implements OnInit {
       .findLessonsForModule(courseId, moduleId)
       .then(lessons => (this.lessons = lessons));
   }
-
-  // ngDoCheck() {
-  //   console.log("doCheck");
-
-  // }
 
   ngOnInit() {}
 }

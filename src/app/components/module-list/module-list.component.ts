@@ -19,6 +19,14 @@ export class ModuleListComponent implements OnInit {
 
   selectModule = module => {
     this.selectedModule = module;
+    this.router.navigate([
+      "/",
+      "course",
+      this.courseId,
+      "module",
+      module.id,
+      "lesson"
+    ]);
   };
 
   ngOnInit() {

@@ -1,3 +1,11 @@
-<p>
-  topic-pills works!
-</p>
+<ul class="nav nav-pills">
+  <li
+    *ngFor="let topic of topics"
+    class="nav-item p-2 m-2 rounded gray webdev white"
+    (click)="selectTopic(topic)"
+    [ngClass]="{ active: topic.id === selectedTopic.id }"
+    style="cursor:pointer"
+  >
+    {{ topic.title }}
+  </li>
+</ul>
