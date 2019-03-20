@@ -1,3 +1,44 @@
-<p>
-  course works!
-</p>
+<div
+  class="navbar navbar-dark bg-dark text-white justify-content-between shadow"
+>
+  <button
+    class="btn btn-outline-light icon-a my-2 my-sm-0"
+    type="button"
+    routerLink="/course"
+    style="cursor: pointer"
+  >
+    X
+  </button>
+  <h2 class="navbar-brand">Course Viewer: {{ this.course.title }}</h2>
+
+  <button
+    class="btn btn-outline-light icon-a my-2 my-sm-0"
+    type="button"
+    routerLink="/course"
+    style="cursor: pointer"
+  >
+    Back To Course Grid
+  </button>
+</div>
+
+<!-- Page Body -->
+<!-- <div class="container-fluid p-0 h-100">
+      <div class="row m-0 h-100 w-100">
+        <div class="col-3 side-menu h-100">
+          <ModuleList
+            courseId={this.state.courseId}
+            courseTitle={this.state.course.title}
+          />
+        </div>
+        <div class="col-9 h-100 w-100">
+          <Route
+            path="/course/:courseId/edit/:moduleId/edit"
+            component={ModuleEditor}
+          />
+          <Route
+            path="/course/:courseId/edit/:moduleId/edit/:lessonId/edit"
+            component={LessonEditor}
+          />
+        </div>
+      </div>
+    </div>  -->
