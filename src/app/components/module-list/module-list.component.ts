@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ModuleService } from "src/app/services/module.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-module-list",
@@ -10,19 +10,31 @@ import { ActivatedRoute } from "@angular/router";
 export class ModuleListComponent implements OnInit {
   @Input() courseId;
   modules = [];
-  selectedModule = {};
-  constructor(private route: ActivatedRoute, private service: ModuleService) {}
+  selectedModule = { id: "" };
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: ModuleService
+  ) {}
 
   selectModule = module => {
     this.selectedModule = module;
+    this.router.navigate([
+      "/",
+      "course",
+      this.courseId,
+      "module",
+      this.selectedModule.id,
+      "lesson"
+    ]);
   };
 
   ngOnInit() {
-    this.service
-      .findModulesForCourse(this.route.snapshot.paramMap.get("courseId"))
-      .then(modules => {
-        this.modules = modules;
-        console.log(modules);
-      });
+    this.courseId = this.route.snapshot.paramMap.get("courseId");
+    this.service.findModulesForCourse(this.courseId).then(modules => {
+      this.modules = modules;
+      console.log(modules);
+      console.log("courseId: " + this.courseId);
+    });
   }
 }
