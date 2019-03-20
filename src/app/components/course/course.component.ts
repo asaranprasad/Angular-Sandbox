@@ -8,7 +8,7 @@ import { CourseService } from "src/app/services/course.service";
   styleUrls: ["./course.component.css"]
 })
 export class CourseComponent implements OnInit {
-  private course = {};
+  course = {};
 
   constructor(private route: ActivatedRoute, private service: CourseService) {}
 
