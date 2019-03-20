@@ -31,8 +31,18 @@ export class ModuleListComponent implements OnInit {
 
   ngOnInit() {
     this.courseId = this.route.snapshot.paramMap.get("courseId");
+    const moduleIdPathVar = this.route.snapshot.paramMap.get("moduleId");
     this.service.findModulesForCourse(this.courseId).then(modules => {
       this.modules = modules;
+      /* Color based on URL */
+      if (moduleIdPathVar != null) {
+        this.modules.forEach(mod => {
+          if (mod.id == moduleIdPathVar) {
+            this.selectedModule = mod;
+            console.log("selected Module: " + mod.title);
+          }
+        });
+      }
       console.log(modules);
       console.log("courseId: " + this.courseId);
     });

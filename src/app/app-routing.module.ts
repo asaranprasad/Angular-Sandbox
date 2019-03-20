@@ -27,12 +27,12 @@ const routes: Routes = [
   },
 
   {
-    path: "course/:courseId/module/:moduleId/lesson/:lessonId",
+    path: "course/:courseId/module/:moduleId/lesson/:lessonId/topic",
     component: CourseComponent
   },
 
   {
-    path: "course/:courseId/module/:moduleId/lesson/:lessonId/widget",
+    path: "course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId/widget",
     component: CourseComponent
   }
 ];

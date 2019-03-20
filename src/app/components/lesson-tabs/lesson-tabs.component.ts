@@ -32,7 +32,8 @@ export class LessonTabsComponent implements OnInit {
       "module",
       this.moduleId,
       "lesson",
-      lesson.id
+      lesson.id,
+      "topic"
     ]);
   };
 
@@ -46,9 +47,19 @@ export class LessonTabsComponent implements OnInit {
   loadLessons(courseId, moduleId) {
     this.courseId = courseId;
     this.moduleId = moduleId;
-    this.service
-      .findLessonsForModule(courseId, moduleId)
-      .then(lessons => (this.lessons = lessons));
+    const lessonIdPathVar = this.route.snapshot.paramMap.get("lessonId");
+    this.service.findLessonsForModule(courseId, moduleId).then(lessons => {
+      this.lessons = lessons;
+      /* Color based on URL */
+      if (lessonIdPathVar != null) {
+        this.lessons.forEach(les => {
+          if (les.id == lessonIdPathVar) {
+            this.selectedLesson = les;
+            console.log("selected Lesson: " + les.title);
+          }
+        });
+      }
+    });
   }
 
   ngOnInit() {}

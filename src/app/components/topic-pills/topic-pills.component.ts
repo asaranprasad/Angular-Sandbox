@@ -34,6 +34,8 @@ export class TopicPillsComponent implements OnInit {
       this.moduleId,
       "lesson",
       this.lessonId,
+      "topic",
+      topic.id,
       "widget"
     ]);
   };
@@ -47,9 +49,19 @@ export class TopicPillsComponent implements OnInit {
   }
 
   loadTopics(lessonId) {
-    this.service
-      .findTopicsForLesson(lessonId)
-      .then(topics => (this.topics = topics));
+    const topicIdPathVar = this.route.snapshot.paramMap.get("topicId");
+    this.service.findTopicsForLesson(lessonId).then(topics => {
+      this.topics = topics;
+      /* Color based on URL */
+      if (topicIdPathVar != null) {
+        this.topics.forEach(top => {
+          if (top.id == topicIdPathVar) {
+            this.selectedTopic = top;
+            console.log("selected Topic: " + top.title);
+          }
+        });
+      }
+    });
   }
 
   ngOnInit() {}
