@@ -4,8 +4,8 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class CourseService {
-  // API_URL = "https://young-shore-20354.herokuapp.com/";
-  API_URL = "http://localhost:8080/";
+  API_URL = "https://young-shore-20354.herokuapp.com/";
+  // API_URL = "http://localhost:8080/";
 
   constructor() {}
 
