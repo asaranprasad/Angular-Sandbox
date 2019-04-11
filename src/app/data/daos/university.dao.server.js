@@ -188,6 +188,27 @@ findAnswersByStudent = id => answerModel.find({ student: id });
 // findAnswersByQuestion(questionId) - retrieves all the answers for a question whose ID is questionId
 findAnswersByQuestion = id => answerModel.find({ question: id });
 
+// updateStudent(id, student)
+updateStudent = (id, student) =>
+  studentModel.update({ _id: id }, { $set: student });
+
+// deleteStudent(id)
+deleteStudent = id => studentModel.deleteOne({ _id: id });
+
+// updateQuestionById(id, question)
+updateQuestionById = (id, question) =>
+  questionModel.updateOne({ _id: id }, { $set: question });
+
+// deleteQuestion(id)
+deleteQuestion = id => questionModel.remove({ _id: id });
+
+// getAnswerByStudent(studentId, questionId)
+getAnswerByStudent = (studentId, questionId) =>
+  answerModel
+    .find({ student: studentId, question: questionId })
+    .populate("student")
+    .populate("question");
+
 module.exports = {
   truncateDatabase,
   populateDatabase,
@@ -201,5 +222,10 @@ module.exports = {
   findAllAnswers,
   findAnswerById,
   findAnswersByStudent,
-  findAnswersByQuestion
+  findAnswersByQuestion,
+  updateStudent,
+  deleteStudent,
+  updateQuestionById,
+  deleteQuestion,
+  getAnswerByStudent
 };
