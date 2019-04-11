@@ -188,4 +188,18 @@ findAnswersByStudent = id => answerModel.find({ student: id });
 // findAnswersByQuestion(questionId) - retrieves all the answers for a question whose ID is questionId
 findAnswersByQuestion = id => answerModel.find({ question: id });
 
-module.exports = studentModel;
+module.exports = {
+  truncateDatabase,
+  populateDatabase,
+  createStudent,
+  createQuestion,
+  answerQuestion,
+  findAllStudents,
+  findStudentById,
+  findAllQuestions,
+  findQuestionById,
+  findAllAnswers,
+  findAnswerById,
+  findAnswersByStudent,
+  findAnswersByQuestion
+};
