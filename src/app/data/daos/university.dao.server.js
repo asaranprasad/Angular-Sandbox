@@ -141,11 +141,26 @@ truncateDatabase = () =>
 // populateDatabase() - populates the database with test data as described in a later section
 populateDatabase = () =>
   Promise.all(
-    answers
-      .map(answer => answerQuestion(answer))
-      .concat(students.map(student => createStudent(student)))
+    students
+      .map(student => createStudent(student))
+      .concat(answers.map(answer => answerQuestion(answer)))
       .concat(questions.map(question => createQuestion(question)))
   ).then(() => console.log("Database populated"));
+
+// populateDatabase = () =>
+//   Promise.all(
+//     answers
+//       .map(answer => answerQuestion(answer))
+//       .concat(students.map(student => createStudent(student)))
+//       .concat(questions.map(question => createQuestion(question)))
+//   ).then(() => console.log("Database populated"));
+
+// answerQuestion(studentId, questionId, answer) - inserts an answer by student student for question question
+answerQuestion = answer =>
+  answerModel
+    .create(answer)
+    .then(result => console.log(result))
+    .catch(err => console.log(err));
 
 // createStudent(student) - inserts a student document
 createStudent = student =>
@@ -155,14 +170,11 @@ createStudent = student =>
     .catch(err => console.log(err));
 
 // createQuestion(question) - inserts a question document
-createQuestion = () => question =>
+createQuestion = question =>
   questionModel
     .create(question)
     .then(result => console.log("result: " + result))
     .catch(err => console.log(err));
-
-// answerQuestion(studentId, questionId, answer) - inserts an answer by student student for question question
-answerQuestion = answer => answerModel.create(answer);
 
 // findAllStudents() - retrieves all students
 findAllStudents = () => studentModel.find();
