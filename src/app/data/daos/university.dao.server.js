@@ -147,14 +147,6 @@ populateDatabase = () =>
       .concat(questions.map(question => createQuestion(question)))
   ).then(() => console.log("Database populated"));
 
-// populateDatabase = () =>
-//   Promise.all(
-//     answers
-//       .map(answer => answerQuestion(answer))
-//       .concat(students.map(student => createStudent(student)))
-//       .concat(questions.map(question => createQuestion(question)))
-//   ).then(() => console.log("Database populated"));
-
 // answerQuestion(studentId, questionId, answer) - inserts an answer by student student for question question
 answerQuestion = answer =>
   answerModel
