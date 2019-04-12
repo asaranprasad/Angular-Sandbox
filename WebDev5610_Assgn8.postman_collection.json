@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "3ab9c6e3-1675-4356-9ba0-54a88b173fed",
+		"name": "WebDev5610_Assgn8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "truncateDatabase",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/all",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"all"
+					]
+				},
+				"description": "Removes all test data from the database"
+			},
+			"response": []
+		},
+		{
+			"name": "populateDatabase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/populate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"populate"
+					]
+				},
+				"description": "Populates the database with test data as described in later section"
+			},
+			"response": []
+		},
+		{
+			"name": "createStudent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": 321,\n        \"username\": \"charlie\",\n        \"password\": \"charlie\",\n        \"firstName\": \"Charlie\",\n        \"lastName\": \"Charlie\",\n        \"gradYear\": 2021,\n        \"scholarship\": 20000,\n        \"__v\": 0\n    }"
+				},
+				"url": {
+					"raw": "{{url}}/api/student",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"student"
+					]
+				},
+				"description": "Populates the database with test data as described in later section"
+			},
+			"response": []
+		},
+		{
+			"name": "findAllStudents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/student",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"student"
+					]
+				},
+				"description": "Retrieves all the students"
+			},
+			"response": []
+		},
+		{
+			"name": "findStudentById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/student/123",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"student",
+						"123"
+					]
+				},
+				"description": "Retrieves student whose ID is id"
+			},
+			"response": []
+		},
+		{
+			"name": "updateStudentById",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"scholarship\": 19000\n    }"
+				},
+				"url": {
+					"raw": "{{url}}/api/student/321",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"student",
+						"321"
+					]
+				},
+				"description": "Updates student whose ID is id with data in HTTP body"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteStudentById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/student/321",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"student",
+						"321"
+					]
+				},
+				"description": "Removes student whose ID is id"
+			},
+			"response": []
+		},
+		{
+			"name": "createQuestion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_id\": 900,\n        \"question\": \"Custom Question?\",\n        \"points\": 100,\n        \"questionType\": \"MULTIPLE_CHOICE\",\n        \"trueFalse\": {\n            \"_id\": 2\n        },\n        \"__v\": 0\n    }"
+				},
+				"url": {
+					"raw": "{{url}}/api/question",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"question"
+					]
+				},
+				"description": "Creates new question whose info is embedded in HTTP body"
+			},
+			"response": []
+		},
+		{
+			"name": "findAllQuestions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/question",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"question"
+					]
+				},
+				"description": "Retrieves all the questions"
+			},
+			"response": []
+		},
+		{
+			"name": "findQuestionById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/question/900",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"question",
+						"900"
+					]
+				},
+				"description": "Retrieves question whose ID is id"
+			},
+			"response": []
+		},
+		{
+			"name": "updateQuestionById",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n        \"question\": \"Custom Default Question?\"\n   }"
+				},
+				"url": {
+					"raw": "{{url}}/api/question/900",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"question",
+						"900"
+					]
+				},
+				"description": "Updates question whose ID is id with data in HTTP body"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteQuestionById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/question/900",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"question",
+						"900"
+					]
+				},
+				"description": "Removes question whose ID is id"
+			},
+			"response": []
+		},
+		{
+			"name": "answerQuestion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n    \t\"_id\": 500,\n        \"multipleChoiceAnswer\": 3\n    }"
+				},
+				"url": {
+					"raw": "{{url}}/api/student/234/question/654/answer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"student",
+						"234",
+						"question",
+						"654",
+						"answer"
+					]
+				},
+				"description": "Student whose ID is sid answers question whose ID is qid"
+			},
+			"response": []
+		},
+		{
+			"name": "getAnswerByStudent",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/student/123/question/432/answer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"student",
+						"123",
+						"question",
+						"432",
+						"answer"
+					]
+				},
+				"description": "Retrieves all answers by student whose ID is sid for question whose ID is qid"
+			},
+			"response": []
+		},
+		{
+			"name": "getAnswerByStudentQuestionId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/question/432/student/123/answer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"question",
+						"432",
+						"student",
+						"123",
+						"answer"
+					]
+				},
+				"description": "Retrieves all answers by student whose ID is sid for question whose ID is qid (same as above)"
+			},
+			"response": []
+		}
+	]
+}
